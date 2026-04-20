@@ -136,6 +136,8 @@ export const AnimatedWorkflow = () => {
         @keyframes fadeUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
         @keyframes drawBox { from { transform: scale(0.6); opacity: 0 } to { transform: scale(1); opacity: 1 } }
         @keyframes cursorMove { 0% { transform: translate(0,0) } 100% { transform: var(--cursor-end) } }
+        @keyframes highlightDrag { from { width: 0% } to { width: 100% } }
+        @keyframes cursorDrag { from { left: 0% } to { left: 100% } }
         .scene-fade > * { animation: fadeUp 0.5s ease-out both; }
       `}</style>
     </div>
