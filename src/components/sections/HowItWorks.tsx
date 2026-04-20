@@ -124,8 +124,15 @@ const TeacherOverviewMock = () => (
     {/* App top bar */}
     <div className="flex items-center justify-between px-4 py-2.5 border-b border-border bg-paper-warm/40">
       <div className="flex items-center gap-2">
-        <div className="h-6 px-2 rounded-md bg-foreground text-background text-[10px] font-mono font-bold grid place-items-center">PAPIRO</div>
-        <span className="text-[10px] font-medium rounded-full bg-emerald-brand text-white px-2.5 py-1">Submissions</span>
+        <div className="inline-flex items-center gap-1.5 text-foreground">
+          <svg viewBox="0 0 52 52" aria-hidden="true" className="h-3.5 w-3.5">
+            <rect x="4" y="7" width="38" height="8" rx="4" fill="currentColor" />
+            <rect x="4" y="22" width="38" height="8" rx="4" fill="currentColor" />
+            <rect x="4" y="37" width="20" height="8" rx="4" fill="currentColor" />
+          </svg>
+          <span className="text-[10px] font-medium uppercase tracking-[0.22em]">Papiro</span>
+        </div>
+        <span className="text-[10px] font-medium rounded-full bg-emerald-brand text-white px-2.5 py-1 ml-2">Submissions</span>
         <span className="text-[10px] font-medium rounded-full text-foreground/70 px-2.5 py-1 hidden sm:inline">Assignments</span>
       </div>
       <div className="text-right">
