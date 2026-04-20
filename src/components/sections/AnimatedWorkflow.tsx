@@ -395,39 +395,36 @@ const AnnotateScene = () => (
             <div className="text-[10px] font-bold text-center text-ink leading-tight mb-2 px-2">
               Argentinië tussen herstel en achteruitgang: hoe ver kan Javier Milei gaan?
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1.5 relative">
               <div className="h-1.5 rounded bg-foreground/10 w-[95%]" />
-              <div className="h-1.5 rounded bg-foreground/10 w-[88%]" />
+              {/* target line being highlighted */}
+              <div className="relative h-1.5 w-[88%]">
+                <div className="absolute inset-0 rounded bg-foreground/10" />
+                {/* orange highlight that grows left-to-right as the cursor drags */}
+                <div
+                  className="absolute -inset-y-1 left-0 rounded-sm bg-amber-soft/80 ring-1 ring-amber-ink/40"
+                  style={{
+                    width: "0%",
+                    animation: "highlightDrag 1.1s 0.35s cubic-bezier(.4,.1,.3,1) forwards",
+                  }}
+                />
+                {/* cursor that drags across the line */}
+                <div
+                  className="absolute pointer-events-none"
+                  style={{
+                    left: "0%",
+                    top: "-6px",
+                    animation: "cursorDrag 1.1s 0.35s cubic-bezier(.4,.1,.3,1) forwards",
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="hsl(var(--ink))" stroke="white" strokeWidth="1.5">
+                    <path d="M3 2l7 18 2.5-7L20 10z" />
+                  </svg>
+                </div>
+              </div>
               <div className="h-1.5 rounded bg-foreground/10 w-[92%]" />
               <div className="h-1.5 rounded bg-foreground/10 w-[70%]" />
               <div className="h-1.5 rounded bg-foreground/10 w-[85%]" />
-            </div>
-
-            {/* highlight rectangle drawing in over the title */}
-            <div
-              className="absolute rounded-sm ring-2 ring-amber-ink/70 bg-amber-soft/60"
-              style={{
-                left: "8%",
-                top: "44px",
-                width: "84%",
-                height: "34px",
-                animation: "drawBox 0.6s 0.3s cubic-bezier(.2,.7,.3,1) both",
-              }}
-            />
-
-            {/* cursor */}
-            <div
-              className="absolute pointer-events-none"
-              style={{
-                left: "12%",
-                top: "30%",
-                animation: "cursorMove 1.1s 0.05s ease-out both",
-                ["--cursor-end" as string]: "translate(180px, 20px)",
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="hsl(var(--ink))" stroke="white" strokeWidth="1.5">
-                <path d="M3 2l7 18 2.5-7L20 10z" />
-              </svg>
             </div>
           </div>
         </div>
