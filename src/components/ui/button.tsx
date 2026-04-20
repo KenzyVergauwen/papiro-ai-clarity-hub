@@ -17,6 +17,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         ink: "bg-foreground text-background hover:bg-foreground/90 shadow-soft",
         paper: "bg-background text-foreground hover:bg-background/90 shadow-soft",
+        emerald: "bg-[hsl(var(--emerald))] text-white hover:bg-[hsl(var(--emerald-deep))] shadow-emerald",
+        peach: "bg-[hsl(var(--peach))] text-[hsl(var(--peach-ink))] hover:bg-[hsl(var(--peach))]/80",
       },
       size: {
         default: "h-10 px-4 py-2",
