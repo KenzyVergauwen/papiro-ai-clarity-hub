@@ -46,7 +46,7 @@ export const SiteHeader = () => {
           <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
             Sign in
           </Button>
-          <Button size="sm" variant="ink">
+          <Button size="sm" variant="emerald">
             Request a demo
           </Button>
         </div>
