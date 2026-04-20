@@ -7,46 +7,59 @@
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 220 15% 8%;
+    --background: 150 30% 98%;
+    --foreground: 200 30% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 8%;
+    --card-foreground: 200 30% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 8%;
+    --popover-foreground: 200 30% 10%;
 
-    --primary: 220 15% 8%;
-    --primary-foreground: 40 20% 98%;
+    --primary: 200 30% 10%;
+    --primary-foreground: 150 30% 98%;
 
-    --secondary: 40 15% 94%;
-    --secondary-foreground: 220 15% 8%;
+    --secondary: 150 25% 94%;
+    --secondary-foreground: 200 30% 10%;
 
-    --muted: 40 12% 92%;
-    --muted-foreground: 220 8% 42%;
+    --muted: 150 18% 93%;
+    --muted-foreground: 200 12% 40%;
 
-    --accent: 35 30% 88%;
-    --accent-foreground: 220 15% 8%;
+    --accent: 162 60% 92%;
+    --accent-foreground: 165 80% 18%;
 
-    --destructive: 0 70% 50%;
+    --destructive: 358 70% 58%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 12% 88%;
-    --input: 30 12% 88%;
-    --ring: 220 15% 8%;
+    --border: 150 15% 88%;
+    --input: 150 15% 88%;
+    --ring: 165 70% 32%;
 
-    --radius: 0.375rem;
+    --radius: 0.875rem;
 
-    /* Brand */
-    --ink: 220 15% 8%;
-    --paper: 40 20% 98%;
-    --paper-warm: 38 28% 95%;
-    --hairline: 30 10% 85%;
+    /* Brand — Papiro emerald + warm peach */
+    --ink: 200 35% 9%;
+    --paper: 150 30% 98%;
+    --paper-warm: 38 60% 95%;
+    --hairline: 150 15% 88%;
+
+    --emerald: 165 75% 30%;
+    --emerald-soft: 162 60% 92%;
+    --emerald-deep: 170 80% 18%;
+    --peach: 22 90% 92%;
+    --peach-ink: 18 75% 45%;
+    --amber-soft: 42 95% 90%;
+    --amber-ink: 32 80% 38%;
+    --sky-soft: 200 75% 92%;
+    --sky-ink: 205 70% 35%;
 
     /* Gradients */
-    --gradient-paper: linear-gradient(180deg, hsl(40 25% 97%) 0%, hsl(38 20% 94%) 100%);
-    --gradient-ink: linear-gradient(135deg, hsl(220 18% 10%) 0%, hsl(220 15% 18%) 100%);
-    --gradient-fade: radial-gradient(60% 50% at 50% 0%, hsl(35 30% 90% / 0.6) 0%, transparent 70%);
+    --gradient-paper: linear-gradient(180deg, hsl(150 35% 98%) 0%, hsl(38 50% 96%) 100%);
+    --gradient-ink: linear-gradient(135deg, hsl(200 35% 9%) 0%, hsl(170 50% 14%) 100%);
+    --gradient-fade: radial-gradient(60% 50% at 50% 0%, hsl(162 60% 88% / 0.7) 0%, transparent 70%);
+    --gradient-emerald: linear-gradient(135deg, hsl(165 75% 32%) 0%, hsl(170 80% 22%) 100%);
+    --gradient-warm: radial-gradient(80% 60% at 80% 20%, hsl(22 90% 90% / 0.55) 0%, transparent 60%),
+                     radial-gradient(60% 50% at 10% 80%, hsl(162 60% 88% / 0.55) 0%, transparent 60%);
 
     /* Shadows */
     --shadow-soft: 0 1px 2px hsl(220 15% 8% / 0.04), 0 8px 24px -12px hsl(220 15% 8% / 0.08);
@@ -119,17 +132,41 @@
   .bg-paper { background-color: hsl(var(--paper)); }
   .bg-paper-warm { background-color: hsl(var(--paper-warm)); }
   .bg-ink { background: var(--gradient-ink); }
+  .bg-emerald-brand { background: hsl(var(--emerald)); }
+  .bg-emerald-soft { background: hsl(var(--emerald-soft)); }
+  .bg-peach { background: hsl(var(--peach)); }
+  .bg-amber-soft { background: hsl(var(--amber-soft)); }
+  .bg-sky-soft { background: hsl(var(--sky-soft)); }
+  .bg-warm-mesh { background: var(--gradient-warm); }
   .text-ink { color: hsl(var(--ink)); }
+  .text-emerald-brand { color: hsl(var(--emerald)); }
+  .text-emerald-deep { color: hsl(var(--emerald-deep)); }
+  .text-peach-ink { color: hsl(var(--peach-ink)); }
+  .text-amber-ink { color: hsl(var(--amber-ink)); }
+  .text-sky-ink { color: hsl(var(--sky-ink)); }
+  .border-emerald-brand { border-color: hsl(var(--emerald)); }
+  .ring-emerald-brand { --tw-ring-color: hsl(var(--emerald)); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-ink { box-shadow: var(--shadow-ink); }
+  .shadow-emerald { box-shadow: 0 10px 30px -12px hsl(var(--emerald) / 0.45); }
   .grid-lines {
     background-image:
       linear-gradient(to right, hsl(var(--hairline) / 0.5) 1px, transparent 1px);
     background-size: 80px 100%;
   }
+  .dot-grid {
+    background-image: radial-gradient(hsl(var(--emerald) / 0.18) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
   .fade-in { animation: fadeIn 0.8s var(--ease-out-soft) both; }
   .rise { animation: rise 0.9s var(--ease-out-soft) both; }
+  .float-slow { animation: floaty 7s ease-in-out infinite; }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes fadeIn {
