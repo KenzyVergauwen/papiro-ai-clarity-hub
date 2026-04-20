@@ -92,58 +92,115 @@ export const HowItWorks = () => (
           </div>
         </div>
 
-        {/* Annotation inspector mock */}
-        <AnnotationMock />
+        {/* Teacher submissions overview mock */}
+        <TeacherOverviewMock />
       </div>
     </div>
   </section>
 );
 
-const AnnotationMock = () => (
-  <div className="rounded-2xl border border-border bg-card shadow-card overflow-hidden">
-    <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-paper-warm/40">
-      <div className="text-xs font-semibold">Annotation inspector</div>
-      <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Page 1</span>
-    </div>
-    <div className="grid grid-cols-[1fr_1fr] divide-x divide-border">
-      {/* AI chat */}
-      <div className="p-4 space-y-3 bg-paper-warm/20">
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-amber-soft text-amber-ink text-[10px] font-mono uppercase tracking-wider px-2 py-0.5">
-          Chat 1 · Prompt 1
-        </div>
-        <p className="text-xs leading-relaxed text-foreground/85">
-          "Schrijf een krantenartikel over de achteruitgang van de Argentijnse economie…"
-        </p>
-        <div className="rounded-lg bg-emerald-soft/60 border border-emerald-brand/20 p-3">
-          <div className="text-[10px] font-mono uppercase tracking-wider text-emerald-deep mb-1">Response 1</div>
-          <p className="text-[11px] leading-relaxed text-emerald-deep/90">
-            Ik ga eerst de recente context rond Argentinië en Milei kort verifiëren…
-          </p>
-        </div>
-      </div>
+type Row = {
+  name: string;
+  code: string;
+  state: "submitted" | "reviewed" | "draft";
+  date: string;
+  flags: { label: string; tone: "amber" | "emerald" }[];
+};
 
-      {/* Inspector form */}
-      <div className="p-4 space-y-3">
-        <div className="rounded-lg bg-amber-soft/70 text-amber-ink text-[11px] px-3 py-2">
-          Annotation anchored to PDF page 1.
-        </div>
-        <div>
-          <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-1">Reference prompt</div>
-          <div className="h-8 rounded-md border border-border flex items-center px-2.5 text-[11px] text-foreground/80 justify-between">
-            Outline · Counter-examples <span className="text-muted-foreground">▾</span>
-          </div>
-        </div>
-        <div>
-          <div className="text-[10px] font-medium text-foreground mb-1">Why did you use AI here?</div>
-          <div className="rounded-md border border-border bg-paper-warm/30 p-2.5 text-[11px] text-muted-foreground italic leading-snug">
-            I used AI to test the structure of my argument and check if this section was complete.
-          </div>
-        </div>
-        <div className="flex items-center justify-between pt-1">
-          <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-deep">Context · not verdict</span>
-          <button className="text-[11px] rounded-md bg-emerald-brand text-white px-2.5 py-1">Save note</button>
-        </div>
+const rows: Row[] = [
+  { name: "Avery Lane", code: "CPW-001", state: "submitted", date: "27-03-2026", flags: [{ label: "Random sample", tone: "emerald" }] },
+  { name: "Samira Haddad", code: "CPW-003", state: "submitted", date: "27-03-2026", flags: [{ label: "Brief reflection", tone: "amber" }, { label: "Random sample", tone: "emerald" }] },
+  { name: "Jules Mercier", code: "CPW-005", state: "reviewed", date: "25-03-2026", flags: [{ label: "Random sample", tone: "emerald" }] },
+];
+
+const stateStyles = {
+  submitted: "text-emerald-deep",
+  reviewed: "text-sky-ink",
+  draft: "text-amber-ink",
+} as const;
+
+const TeacherOverviewMock = () => (
+  <div className="rounded-2xl border border-border bg-card shadow-card overflow-hidden">
+    {/* App top bar */}
+    <div className="flex items-center justify-between px-4 py-2.5 border-b border-border bg-paper-warm/40">
+      <div className="flex items-center gap-2">
+        <div className="h-6 px-2 rounded-md bg-foreground text-background text-[10px] font-mono font-bold grid place-items-center">PAPIRO</div>
+        <span className="text-[10px] font-medium rounded-full bg-emerald-brand text-white px-2.5 py-1">Submissions</span>
+        <span className="text-[10px] font-medium rounded-full text-foreground/70 px-2.5 py-1 hidden sm:inline">Assignments</span>
       </div>
+      <div className="text-right">
+        <div className="text-[10px] font-semibold leading-tight">Dr. Mira Solberg</div>
+        <div className="text-[9px] text-muted-foreground leading-tight">teacher@papiro.test</div>
+      </div>
+    </div>
+
+    {/* Header */}
+    <div className="px-5 pt-5 pb-3 flex items-start justify-between gap-3">
+      <div>
+        <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">POL-204-A1</div>
+        <div className="text-base font-semibold mt-0.5">Student overview</div>
+        <div className="text-[11px] text-muted-foreground">Random sample of 5 students prepared.</div>
+      </div>
+      <div className="hidden sm:flex items-center gap-2 shrink-0">
+        <div className="text-[10px] rounded-full border border-sky-ink/30 text-sky-ink px-2.5 py-1 font-medium">⤫ Draw sample</div>
+      </div>
+    </div>
+
+    {/* Stat chips */}
+    <div className="px-5 flex flex-wrap gap-1.5">
+      {[
+        ["Expected", "10"],
+        ["Submitted", "8"],
+        ["Drafts", "3"],
+        ["Missing", "2"],
+        ["Flagged", "4"],
+      ].map(([k, v]) => (
+        <span key={k} className="text-[10px] rounded-full border border-border px-2 py-0.5 text-muted-foreground">
+          {k}: <span className="font-semibold text-foreground">{v}</span>
+        </span>
+      ))}
+    </div>
+
+    {/* Filter tabs */}
+    <div className="px-5 mt-3 flex flex-wrap gap-1.5">
+      {["All (11)", "Needs attention (4)", "Missing (2)", "Drafts (3)"].map((t) => (
+        <span key={t} className="text-[10px] rounded-full border border-border px-2.5 py-1 text-foreground/70">{t}</span>
+      ))}
+      <span className="text-[10px] rounded-full bg-emerald-brand text-white px-2.5 py-1 font-medium">Sample (5)</span>
+    </div>
+
+    {/* Table */}
+    <div className="mt-4 mx-3 mb-3 rounded-xl border border-border overflow-hidden">
+      <div className="grid grid-cols-[1.2fr_0.9fr_1fr_1.1fr] px-3 py-2 bg-paper-warm/40 text-[9px] font-mono uppercase tracking-widest text-muted-foreground">
+        <div>Student</div>
+        <div>State</div>
+        <div>Latest</div>
+        <div>Flags</div>
+      </div>
+      {rows.map((r, i) => (
+        <div key={r.code} className={`grid grid-cols-[1.2fr_0.9fr_1fr_1.1fr] gap-2 px-3 py-3 items-center text-[11px] ${i > 0 ? "border-t border-border" : ""}`}>
+          <div>
+            <div className="font-semibold text-foreground leading-tight">{r.name}</div>
+            <div className="text-[10px] text-muted-foreground font-mono">{r.code}</div>
+          </div>
+          <div className={`text-[9px] font-mono uppercase tracking-widest ${stateStyles[r.state]}`}>
+            {r.state}
+          </div>
+          <div className="text-foreground/80 text-[10px]">{r.date}</div>
+          <div className="flex flex-wrap gap-1">
+            {r.flags.map((f) => (
+              <span
+                key={f.label}
+                className={`text-[9px] rounded-full px-1.5 py-0.5 font-medium ${
+                  f.tone === "amber" ? "bg-amber-soft text-amber-ink" : "bg-emerald-soft text-emerald-deep"
+                }`}
+              >
+                {f.label}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 );
