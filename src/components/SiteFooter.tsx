@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo";
+
+type FooterLink = { label: string; href: string };
 
 export const SiteFooter = () => (
   <footer className="border-t border-border bg-background">
@@ -10,9 +13,33 @@ export const SiteFooter = () => (
             Clarity for AI in education. Built for schools and universities that want a more honest conversation about AI in academic work.
           </p>
         </div>
-        <FooterCol title="Product" links={["Overview", "How it works", "Principles", "FAQ"]} />
-        <FooterCol title="Institution" links={["For schools", "For leadership", "For educators", "Pilot programme"]} />
-        <FooterCol title="Company" links={["About", "Contact", "Privacy", "Terms"]} />
+        <FooterCol
+          title="Product"
+          links={[
+            { label: "Overview", href: "/#product" },
+            { label: "How it works", href: "/#how" },
+            { label: "Principles", href: "/#principles" },
+            { label: "FAQ", href: "/#faq" },
+          ]}
+        />
+        <FooterCol
+          title="Institution"
+          links={[
+            { label: "For schools", href: "/#audience" },
+            { label: "For leadership", href: "/#audience" },
+            { label: "For educators", href: "/#audience" },
+            { label: "Pilot programme", href: "/contact" },
+          ]}
+        />
+        <FooterCol
+          title="Company"
+          links={[
+            { label: "About", href: "/about" },
+            { label: "Contact", href: "/contact" },
+            { label: "Privacy", href: "/privacy" },
+            { label: "Terms", href: "/terms" },
+          ]}
+        />
       </div>
       <div className="hairline mt-12" />
       <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
@@ -23,15 +50,15 @@ export const SiteFooter = () => (
   </footer>
 );
 
-const FooterCol = ({ title, links }: { title: string; links: string[] }) => (
+const FooterCol = ({ title, links }: { title: string; links: FooterLink[] }) => (
   <div className="md:col-span-2">
     <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">{title}</h4>
     <ul className="space-y-2.5">
       {links.map((l) => (
-        <li key={l}>
-          <a href="#" className="text-sm hover:text-foreground text-foreground/80 transition-colors">
-            {l}
-          </a>
+        <li key={l.label}>
+          <Link to={l.href} className="text-sm hover:text-foreground text-foreground/80 transition-colors">
+            {l.label}
+          </Link>
         </li>
       ))}
     </ul>
