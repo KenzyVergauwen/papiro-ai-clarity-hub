@@ -18,7 +18,8 @@ export const SiteFooter = () => (
           links={[
             { label: "Overview", href: "/#product" },
             { label: "How it works", href: "/#how" },
-            { label: "Principles", href: "/#principles" },
+            { label: "Student workflow", href: "/student-workflow" },
+            { label: "Educator workflow", href: "/teacher-workflow" },
             { label: "FAQ", href: "/#faq" },
           ]}
         />
