@@ -384,6 +384,35 @@ const PapiroPanel = ({ phase }: { phase: Phase }) => (
             </p>
           </div>
         )}
+
+        {/* student reflection — phase 2 */}
+        {phase >= 2 && (
+          <div
+            className="mt-2 rounded-md border-l-2 border-emerald-brand bg-card px-3 py-2.5 shadow-soft"
+            style={{ animation: "pvdFadeUp 0.4s 200ms ease-out both" }}
+          >
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-1.5">
+                <PenLine className="h-3 w-3 text-emerald-deep" />
+                <span className="text-[9px] font-mono uppercase tracking-[0.18em] text-emerald-deep font-semibold">
+                  Student reflection
+                </span>
+              </div>
+              <span className="text-[8px] font-mono uppercase tracking-wider text-emerald-deep bg-emerald-soft border border-emerald-brand/30 px-1.5 py-0.5 rounded">
+                by student
+              </span>
+            </div>
+            <p className="text-[10.5px] text-foreground/85 leading-snug">
+              "Ik gebruikte de tijdslijn als startpunt en heb daarna twee bronnen
+              <span className="text-emerald-deep font-semibold"> zelf geverifieerd</span> en
+              één claim verworpen."
+            </p>
+            <div className="mt-1.5 flex items-center gap-1 text-[9px] text-muted-foreground">
+              <Check className="h-2.5 w-2.5 text-emerald-brand" />
+              <span>Sources cross-checked · 2 of 3 used</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* trust + reflection */}
