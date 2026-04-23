@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Hero } from "@/components/sections/Hero";
 import { LogoStrip } from "@/components/sections/LogoStrip";
 import { WhyNow } from "@/components/sections/WhyNow";
+import { PapiroVsDetector } from "@/components/sections/PapiroVsDetector";
 import { Audience } from "@/components/sections/Audience";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Principles } from "@/components/sections/Principles";
@@ -16,6 +17,7 @@ const Index = () => (
       <Hero />
       <LogoStrip />
       <WhyNow />
+      <PapiroVsDetector />
       <Audience />
       <HowItWorks />
       <Principles />
