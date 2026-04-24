@@ -1,13 +1,19 @@
 import { ReactNode } from "react";
 
 interface Props {
-  role: "student" | "teacher";
+  role: "student" | "teacher" | "internal";
   userName: string;
   userEmail: string;
   activeTab: string;
   tabs: string[];
   children: ReactNode;
 }
+
+const ROLE_LABEL: Record<Props["role"], string> = {
+  student: "Student workspace",
+  teacher: "Educator workspace",
+  internal: "Internal admin console",
+};
 
 export const AppChrome = ({ role, userName, userEmail, activeTab, tabs, children }: Props) => (
   <div className="rounded-2xl border border-border bg-card shadow-card overflow-hidden">
@@ -22,7 +28,7 @@ export const AppChrome = ({ role, userName, userEmail, activeTab, tabs, children
           <span className="text-[10px] font-medium uppercase tracking-[0.22em]">Papiro</span>
         </div>
         <span className="ml-2 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-          {role === "student" ? "Student workspace" : "Educator workspace"}
+          {ROLE_LABEL[role]}
         </span>
       </div>
       <div className="flex items-center gap-1.5">
