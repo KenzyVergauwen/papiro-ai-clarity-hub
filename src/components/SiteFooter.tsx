@@ -21,6 +21,7 @@ export const SiteFooter = () => (
             { label: "Student workflow", href: "/student-workflow" },
             { label: "Educator workflow", href: "/teacher-workflow" },
             { label: "Form builder", href: "/admin-form-builder" },
+            { label: "Internal admin", href: "/internal-admin" },
             { label: "FAQ", href: "/#faq" },
           ]}
         />
