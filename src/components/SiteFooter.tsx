@@ -20,6 +20,7 @@ export const SiteFooter = () => (
             { label: "How it works", href: "/#how" },
             { label: "Student workflow", href: "/student-workflow" },
             { label: "Educator workflow", href: "/teacher-workflow" },
+            { label: "Form builder", href: "/admin-form-builder" },
             { label: "FAQ", href: "/#faq" },
           ]}
         />
